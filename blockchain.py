@@ -226,7 +226,7 @@ def mine():
         'proof': block['proof'],
         'previous_hash': block['previous_hash'],
     }
-    return jsonify(response), 200
+    return response
 
 
 @app.route('/transactions/new', methods=['POST'])
@@ -269,7 +269,7 @@ def register_nodes():
         'message': 'New nodes have been added',
         'total_nodes': list(blockchain.nodes),
     }
-    return jsonify(response), 201
+    return response
 
 
 @app.route('/nodes/resolve', methods=['GET'])
