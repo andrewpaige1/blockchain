@@ -193,6 +193,7 @@ class Blockchain:
 
 # Instantiate the Node
 app = Flask(__name__)
+app.config['JSONIFY_PRETTYPRINT_REGULAR'] = False
 
 # Generate a globally unique address for this node
 node_identifier = str(uuid4()).replace('-', '')
@@ -226,7 +227,7 @@ def mine():
         'proof': block['proof'],
         'previous_hash': block['previous_hash'],
     }
-    return response
+    return jsonify(response), 200
 
 
 @app.route('/transactions/new', methods=['POST'])
